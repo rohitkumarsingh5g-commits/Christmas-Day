@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merry Christmas 🎄</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Great+Vibes&display=swap');
+body{
+  margin:0;
+  padding:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(45deg,#ff6b6b,#feca57,#1dd1a1,#54a0ff,#5f27cd);
+  background-size:400% 400%;
+  animation:gradientBG 15s ease infinite;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  color:#fff;
+  text-align:center;
+  overflow:hidden;
+}
+@keyframes gradientBG{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+.container{
+  background:rgba(255,255,255,0.1);
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 8px 32px rgba(31,38,135,0.37);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.18);
+  max-width:90%;
+  width:400px;
+  animation:fadeIn 1s ease-in-out;
+}
+@keyframes fadeIn{
+  from{opacity:0;transform:scale(0.9);}
+  to{opacity:1;transform:scale(1);}
+}
+.input-group{margin-bottom:25px;}
+#userName{
+  width:100%;
+  padding:12px;
+  border:2px solid #fff;
+  border-radius:50px;
+  background:transparent;
+  color:#fff;
+  font-size:1rem;
+  text-align:center;
+  outline:none;
+  transition:all 0.3s ease;
+}
+#userName::placeholder{color:rgba(255,255,255,0.7);}
+#userName:focus{
+  background:rgba(255,255,255,0.2);
+  border-color:#feca57;
+}
+.button{
+  display:inline-block;
+  padding:12px 25px;
+  margin:10px;
+  border:2px solid #fff;
+  border-radius:50px;
+  background:transparent;
+  color:#fff;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.3s ease-in-out;
+}
+.button:hover{
+  background:#fff;
+  color:#ff6b6b;
+  transform:translateY(-3px);
+  box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+.whatsapp-btn{
+  background:#25D366;
+  border-color:#25D366;
+}
+.whatsapp-btn:hover{
+  background:#fff;
+  color:#25D366;
+}
+.popup-overlay{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.6);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  visibility:hidden;
+  opacity:0;
+  transition:opacity 0.3s ease,visibility 0.3s ease;
+  z-index:1000;
+}
+.popup-overlay.active{visibility:visible;opacity:1;}
+.popup{
+  background:#fff;
+  color:#333;
+  padding:30px;
+  border-radius:15px;
+  width:90%;
+  max-width:350px;
+  text-align:center;
+  transform:scale(0.8);
+  transition:transform 0.3s ease;
+}
+.popup-overlay.active .popup{transform:scale(1);}
+.popup p{font-size:1.1rem;margin-bottom:20px;}
+.popup .close-btn{
+  position:absolute;
+  top:10px;
+  right:15px;
+  font-size:1.5rem;
+  cursor:pointer;
+  color:#aaa;
+  transition:color 0.2s ease;
+}
+.popup .close-btn:hover{color:#333;}
+.gif-img{
+  width:100%;
+  border-radius:15px;
+  margin-bottom:25px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="https://ibb.co/h1Mm1LLv">
+    <img src="https://i.ibb.co/prPLrbbp/image-search-1762071400284.gif" alt="Christmas Celebration" class="gif-img" border="0">
+  </a>
+  <div class="input-group">
+    <input type="text" id="userName" placeholder="Enter your name...">
+  </div>
+  <div>
+    <button class="button whatsapp-btn" onclick="shareOnWhatsApp()">Share on WhatsApp 🎅</button>
+    <button class="button" onclick="openPopup()">Celebrate Now 🎄</button>
+  </div>
+  <div style="margin-top:20px;">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '77cce5a1a06615565a729af13861d94e',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//orientsweptautopsy.com/77cce5a1a06615565a729af13861d94e/invoke.js"></script>
+  </div>
+</div>
+
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <p>🎅 Christmas is a season of love, joy, and peace! Wishing you and your family a Merry Christmas! 🎄</p>
+  </div>
+</div>
+
+<script>
+function shareOnWhatsApp(){
+  const userName=document.getElementById('userName').value.trim();
+  const defaultName='From your friend';
+  const finalName=userName?userName:defaultName;
+  const pageUrl='https://christmas-greetings.vercel.app/';
+  const message=`🎄 Merry Christmas! 🎅 Warm wishes from ${finalName} ❤️✨ Check out this lovely page 👉 ${pageUrl}`;
+  const whatsappUrl=`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+  window.open(whatsappUrl,'_blank');
+}
+const popupOverlay=document.getElementById('popupOverlay');
+function openPopup(){popupOverlay.classList.add('active');}
+function closePopup(){popupOverlay.classList.remove('active');}
+window.onclick=e=>{if(e.target==popupOverlay)closePopup();}
+</script>
+</body>
+</html>
